@@ -1,7 +1,7 @@
 var five = require("johnny-five"), button, buttonLed;
       _    = require('lodash');
 
-var socket = require('socket.io-client')('http://206.189.234.255:8083/',{reconnect: true});
+var socket = require('socket.io-client')('http://206.81.14.221:8081/',{reconnect: true});
 
 
 /*var express = require('express');
