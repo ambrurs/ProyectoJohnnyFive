@@ -21,6 +21,7 @@ app.get('/', function (req,res) {
 
 var board = new five.Board({ports:'COM3'});
 var temp = -1;
+var luz = -1;
 board.on("ready", function () {
 
        console.log("Conectado al socket", socket.id);
@@ -30,16 +31,44 @@ board.on("ready", function () {
         pin: "A0"
       });
 
-    var rgb = new five.Led.RGB({
+    var rgb1 = new five.Led.RGB({
+        pins: {
+            red: 6,
+            green: 7,
+            blue: 8
+        }
+    });
+
+    var rgb2 = new five.Led.RGB({
         pins: {
             red: 9,
             green: 10,
             blue: 11
-        },
-        isAnode: true
+        }
     });
 
-    rgb.on();
+    var rgb3 = new five.Led.RGB({
+        pins: {
+            red: 22,
+            green: 24,
+            blue: 26
+        }
+    });
+
+    var rgb4 = new five.Led.RGB({
+        pins: {
+            red: 28,
+            green: 30,
+            blue: 32
+        }
+    });
+
+
+
+    rgb1.on();
+    rgb2.on();
+    rgb3.on();
+    rgb4.on();
 
     var light = new five.Light("A1");
 
@@ -86,7 +115,7 @@ board.on("ready", function () {
   
   //alarma
   var alarma =  function(){
- var piezo = new five.Piezo(7);
+ var piezo = new five.Piezo(3);
 
   // Injects the piezo into the repl
   board.repl.inject({
@@ -174,15 +203,32 @@ board.on("ready", function () {
 	    } else {
 			apagarLed();
 		}
-	}
-   }
+	 }
+
+    if(message.includes("L:")){
+     luz =  parseInt(message.substring(2));
+     socket.emit('sensorLuz', luz);
+    }
+
+    if(message.includes("P:")){
+     var pir =  parseInt(message.substring(2));
+     socket.emit('sensorProxi', pir);
+    }
+
+  }
+
+
+ 
  )} 
 
   read();
 
 
       socket.on('ledPrint', function(data){
-          rgb.color(data);
+          rgb1.color(data);
+          rgb2.color(data);
+          rgb3.color(data);
+          rgb4.color(data);
       });
 
       socket.on('onServo', function (){
@@ -197,9 +243,9 @@ board.on("ready", function () {
 
 
 
-    /*socket.on("temp",function(){
+    socket.on("temp",function(){
           socket.emit('tempResponse', temp);      
-    });*/
+    });
 
       //Temperatura
       temperature.on("change", function() {
