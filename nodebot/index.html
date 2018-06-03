@@ -1,0 +1,357 @@
+<html>
+<head>
+	<title></title>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+	.btn{
+		width: 200px;
+		padding: 15px 32px;
+		text-align: center;
+	}
+
+	.leds{			
+		margin: 0 auto;
+		padding-top: 50px;
+		height: 70%;
+		min-height: 70%;
+		width: 100%;
+		min-width: 80%;
+		
+	}
+
+	.leds-background{
+		margin: 0 auto;
+		height: 10%;
+		width:  5%;
+		margin-top: 25px;
+		padding-top: 50px;
+		margin-left: 200px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		background: #ccc;
+		float: left;
+	}
+
+	.leds-blinky-background{
+		margin: 0 auto;
+		height: 10%;
+		width:  5%;
+		margin-top: 25px;
+		padding-top: 50px;
+		margin-left: 200px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		background: #ccc;
+		float: left;
+		animation: blinkYellow 0.5s infinite;
+	}
+
+	.leds-blinkg-background{
+		margin: 0 auto;
+		height: 10%;
+		width:  5%;
+		margin-top: 25px;
+		padding-top: 50px;
+		margin-left: 200px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		background: #ccc;
+		float: left;
+		animation: blinkGreen 0.5s infinite;
+	}
+
+	.leds-blinkr-background{
+		margin: 0 auto;
+		height: 10%;
+		width:  5%;
+		margin-top: 25px;
+		padding-top: 50px;
+		margin-left: 200px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		background: #ccc;
+		float: left;
+		animation: blinkRed 0.5s infinite;
+	}
+	@keyframes blinkYellow {
+		from { background-color: yellow; }
+    	50% { background-color: #CCC;}
+    	to { background-color: yellow; }
+	}
+
+	@keyframes blinkGreen {
+		from { background-color: green; }
+    	50% { background-color: #CCC;}
+    	to { background-color: green; }
+	}
+
+	@keyframes blinkRed {
+		from { background-color: red; }
+    	50% { background-color: #CCC;}
+    	to { background-color: red; }
+	}	
+
+	.navbar-header {
+		float: left;
+		padding: 20px;
+		text-align: center;
+		width: 100%;
+	}
+
+	.navbar-default{
+		background: #112273;
+		text-align: center;
+		padding-top: 15px;
+
+	}
+
+	.navbar-default .navbar-brand{
+		color : #FFF;		
+		float: none;
+	}
+
+	.navbar-default .navbar-brand:hover{
+		color : #FFF;
+	}
+
+	.temperatura, .poten{
+		margin: 0 auto;
+		text-align: center;
+		height: 70%;
+	}
+	
+	.btns{
+		padding-left: 4%;
+	}
+
+
+	#termo{
+		margin: 0 auto;
+		padding-top: 20px;
+		height: 20%;
+		width: 70%;
+	}
+
+	.temperatura-border{
+		border: 1px solid;
+		
+	}
+
+	.temperatura-color{
+		background: green;
+		color: white;
+	}
+
+	.temperatura-color2{
+		background: red;
+		color: white;
+	}
+
+	.temperatura-color3{
+		background: blue;
+		color: white;
+	}
+
+	.poten{
+		padding-top: 60px;
+		height: 40%;
+		
+	}
+	
+	.poten h1{
+		margin: 0 auto;
+		
+		width: 50%;
+		border: 2px solid;	
+	}
+	
+	.poten-animation{
+		margin: 0 auto;
+		height: 20px;
+		background: gray;
+		width:20%;
+		border: 1px solid;
+	}
+	
+	.poten-animation1{
+		margin: 0 auto;
+		height: 40px;
+		background: yellow;
+		width:20%;
+		border: 1px solid;
+	}
+	
+	.poten-animation2{
+		margin: 0 auto;
+		height: 90px;
+		background: orange;
+		width:20%;
+		border: 1px solid;
+	}
+	
+	.poten-animation3{
+		margin: 0 auto;
+		height: 150px;
+		background: red;
+		width:20%;
+		border: 1px solid;
+	}
+	
+	
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-default">
+		<a class="navbar-brand" href="#">Johnny-five.JS</a>
+	</nav>
+
+	<div class="container " role="main">
+
+		<ul class="nav nav-tabs">
+			<li class="active"><a data-toggle="tab" href="#leds">LEDS</a></li>
+			<li><a data-toggle="tab" href="#menu1">Thermomether</a></li>
+			<li><a data-toggle="tab" href="#menu2">Servo</a></li>
+		</ul>
+
+		<div class="tab-content">
+			<div id="leds" class="tab-pane fade in active">
+				<div class="row leds">
+					<div class=" col-md-offset-1 btns">
+						<button id="b_on" type="button" class="btn btn-lg btn-success">ON</button>
+					</div>
+					<br>
+					<div class="containerLeds">
+						<div id="led1" class="leds-background"></div>
+						<div id="led2" class="leds-background"></div>
+						<div id="led3" class="leds-background"></div>
+					</div>
+				</div>
+			</div>
+			<div id="menu1" class="tab-pane fade">
+				<div class="temperatura">
+					<div id="termo">
+						<h1  id="h1Temp" class="temperatura-border temperatura-color"> <span id="temperatura"></span> °C </h1>
+					</div>
+				</div>	
+			</div>
+			<div id="menu2" class="tab-pane fade">
+					<button id="b_onS" type="button" class="btn btn-lg btn-primary">ON</button>
+			</div>
+		</div>
+
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+	<script>
+		var socket = io('http://localhost:8083');
+		debugger; 
+		
+		var blink = true;
+
+		function onOn(){
+			debugger;
+			socket.emit('writeLed');
+			$("#led1").css("background-color", "yellow");
+			$("#led2").css("background-color", "green");
+			$("#led3").css("background-color", "red");
+		
+			setInterval(function(){ 
+				$(".leds-background").css("background-color", "#ccc");
+			 }, 3000);
+
+		}
+
+		function onOff(){
+			debugger;
+			socket.emit('writeServo');
+			$(".leds-background").css("background-color", "#ccc");
+		}
+
+		function onStop(){
+			debugger;
+			socket.emit('stop');
+			blink = false;
+			document.getElementById("led1").classList.remove('leds-blinky-background');
+			document.getElementById("led1").classList.add('leds-background');
+			document.getElementById("led2").classList.remove('leds-blinkg-background');
+			document.getElementById("led2").classList.add('leds-background');
+			document.getElementById("led3").classList.remove('leds-blinkr-background');
+			document.getElementById("led3").classList.add('leds-background');
+		}
+
+		function onAnimation(){
+			debugger;
+			socket.emit('animation');
+			document.getElementById("led1").classList.remove('leds-background');
+			document.getElementById("led1").classList.add('leds-blinky-background');
+			document.getElementById("led2").classList.remove('leds-background');
+			document.getElementById("led2").classList.add('leds-blinkg-background');
+			document.getElementById("led3").classList.remove('leds-background');
+			document.getElementById("led3").classList.add('leds-blinkr-background');						
+		}
+
+		socket.on('temperature', function(data){
+			document.getElementById('temperatura').textContent = data
+
+			if(data > 25){
+				document.getElementById("h1Temp").classList.remove('temperatura-color');
+				document.getElementById("h1Temp").classList.remove('temperatura-color3');
+				document.getElementById("h1Temp").classList.add('temperatura-color2');
+			}else if(data < 10){
+				document.getElementById("h1Temp").classList.remove('temperatura-color');
+				document.getElementById("h1Temp").classList.remove('temperatura-color2');
+				document.getElementById("h1Temp").classList.add('temperatura-color3');
+			}else{
+				document.getElementById("h1Temp").classList.remove('temperatura-color2');
+				document.getElementById("h1Temp").classList.remove('temperatura-color3');
+				document.getElementById("h1Temp").classList.add('temperatura-color');
+			}			
+		});
+
+		
+		socket.on('potentiometer', function(datos){
+			document.getElementById('potenciometro').textContent = datos;
+			
+			if(datos > 150){
+				document.getElementById("poten-animation").classList.remove('poten-animation1');			
+				document.getElementById("poten-animation").classList.remove('poten-animation2');
+				document.getElementById("poten-animation").classList.remove('poten-animation');
+				document.getElementById("poten-animation").classList.add('poten-animation3');
+			}else if(datos > 100){
+				document.getElementById("poten-animation").classList.remove('poten-animation1');			
+				document.getElementById("poten-animation").classList.remove('poten-animation');
+				document.getElementById("poten-animation").classList.remove('poten-animation3');
+				document.getElementById("poten-animation").classList.add('poten-animation2');
+			}else if(datos > 500){
+				document.getElementById("poten-animation").classList.remove('poten-animation');			
+				document.getElementById("poten-animation").classList.remove('poten-animation2');
+				document.getElementById("poten-animation").classList.remove('poten-animation3');
+				document.getElementById("poten-animation").classList.add('poten-animation1');
+			}else{
+				document.getElementById("poten-animation").classList.remove('poten-animation1');			
+				document.getElementById("poten-animation").classList.remove('poten-animation2');
+				document.getElementById("poten-animation").classList.remove('poten-animation3');
+				document.getElementById("poten-animation").classList.add('poten-animation');
+			}			
+			
+			
+		});
+
+			
+
+
+		document.getElementById('b_on').onclick = onOn;
+		document.getElementById('b_onS').onclick = onOff;
+		document.getElementById('b_animation').onclick = onAnimation;
+		document.getElementById('b_stop').onclick = onStop;
+	</script>
+</body>
+</html>
